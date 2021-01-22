@@ -15,19 +15,22 @@ function setup() {
 	world = engine.world;
 
 	//Create the Bodies Here.
-	 roof = new Roof(680, 100, 600, 15)
-	 diameter = 50
+	 roof = new Roof(width/2, 100, 600, 15)
+	 diameter = 40
+
+	 bobStartXPosition = width/2;
+	 bobStartYPosition = 400;
 	 
-	 bob = new Bob(480, 412, 40);
-	 chain1 = new Chain(bob.body, roof.body, -diameter*3.6, 0)
-	 bob2 = new Bob(680, 402, 40)
+	 bob = new Bob(bobStartXPosition-diameter*3, bobStartYPosition, diameter);
+	 chain1 = new Chain(bob.body, roof.body, -diameter*4, 0)
+	 bob2 = new Bob(bobStartXPosition-diameter*1.5, bobStartYPosition, diameter)
 	 chain2 = new Chain(bob2.body, roof.body, -diameter*2, 0)
-	 bob3 = new Bob(765, 403, 40);
-	 chain3 = new Chain(bob3.body, roof.body, -diameter*0.5, 0)
-	 bob4 = new Bob(870,390, 40);
-	 chain4 = new Chain(bob4.body, roof.body, -diameter*-1, 0)
-	 bob5 = new Bob(880, 415, 40);
-	 chain5 = new Chain(bob5.body, roof.body, -diameter*-2.5, 0)
+	 bob3 = new Bob(bobStartXPosition, bobStartYPosition, diameter);
+	 chain3 = new Chain(bob3.body, roof.body, 0, 0);
+	 bob4 = new Bob(bobStartXPosition+diameter*1.5,bobStartYPosition, diameter);
+	 chain4 = new Chain(bob4.body, roof.body, diameter*2, 0)
+	 bob5 = new Bob(bobStartXPosition+diameter*3, bobStartYPosition, diameter);
+	 chain5 = new Chain(bob5.body, roof.body, diameter*4, 0)
 	
 	Engine.run(engine);
   
@@ -55,12 +58,12 @@ function draw() {
  
  
 }
-function mouseDragged(){
-	Body.setPosition(bob.body, {x:mouseX, y:mouseY})
+
+function keypressed(){
+	if(keyCode === 38){
+	Body.setPosition(bob.body, {x:bobStartXPosition-diameter*6, y:200})
 	}
+}
 	
-	function mouseReleased(){
-	chain1.fly()
-	}
 
 	
