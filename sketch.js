@@ -54,14 +54,14 @@ function draw() {
   bob5.display();
 
   
-
+keyPressed();
  
  
 }
 
-function keypressed(){
+function keyPressed(){
 	if(keyCode === 38){
-	Body.setPosition(bob.body, {x:bobStartXPosition-diameter*6, y:200})
+	Body.setPosition(bob.body, {x:bobStartXPosition-diameter*6, y:100})
 	}
 }
 	
